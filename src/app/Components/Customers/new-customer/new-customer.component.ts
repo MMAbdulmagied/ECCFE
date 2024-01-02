@@ -26,13 +26,15 @@ export class NewCustomerComponent implements OnInit {
       email: ''
     }
   }
-  
+
   onSave() {
     this.isSubmit = true;
     this.service.postCustomer().subscribe(res => {
       this._router.navigateByUrl('/customers');
     }, err => {
       this.errors = err.error.errors;
+      if (this.errors == null)
+        this.errors = err.error;
     });
   }
 }

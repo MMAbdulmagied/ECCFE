@@ -14,6 +14,7 @@ import { PageNotFoundComponent } from './Components/page-not-found/page-not-foun
 import { CustomersListComponent } from './Components/Customers/customers-list/customers-list.component';
 import { NewCustomerComponent } from './Components/Customers/new-customer/new-customer.component';
 import { FormsModule } from '@angular/forms';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -29,7 +30,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     NewCertificateComponent,
     PageNotFoundComponent,
     CustomersListComponent,
-    NewCustomerComponent
+    NewCustomerComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

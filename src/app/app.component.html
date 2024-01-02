@@ -1,11 +1,24 @@
 
 
+<nav class=" justify-content-between d-none d-lg-flex">
+    <div class="left-side-nav">
+        <div class="menu languages-menu ui-rtl " dir="rtl">
+            
+            <button type="button" class="cursor-pointer" style="padding-top: 13px" icon="pi pi-list" label=" " (click)="langtoggle()">
+                {{translate.currentLang == 'ar-SA'?'عربى':'English'}}<span class="flag-icon flag-icon-sa " style="margin-right: 0;" *ngIf="translate.currentLang == 'ar-SA' "></span>
+                <span class="flag-icon flag-icon-us cursor-pointer" style="margin-right: 0;" *ngIf="translate.currentLang == 'en-US'"></span>
+                </button>
+        </div>
+    </div>
+  </nav>
+
+
 <div class="container">
     <ul>
-        <li><a routerLink="">Home</a></li>
-        <li><a routerLink="customers">Customers</a></li>
-        <li><a routerLink="certificates">Certificates</a></li>
-        <li><a routerLink="complains">Complains</a></li>
+        <li><a routerLink="">{{ 'Home' | translate }}</a></li>
+        <li><a routerLink="customers">{{ 'Customers' | translate }}</a></li>
+        <li><a routerLink="certificates">{{ 'Certificates' | translate }}</a></li>
+        <li><a routerLink="complains">{{ 'Complains' | translate }}</a></li>
     </ul>
 
     <router-outlet></router-outlet>
