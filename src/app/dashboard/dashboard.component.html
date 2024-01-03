@@ -1,1 +1,24 @@
-<h1>{{ 'Home' | translate }}</h1>
+<form ngForm="Form" (submit)="onSubmit()" *ngIf="!service.isLogIn">
+     <div class="form-group">
+        <label for="Mobile">{{ 'CUSTOMER.Mobile' | translate }} <span style="color: red;">*</span></label>
+        <input required  [ngClass]="{'red-border-class': errors?.Mobile && isSubmit}" 
+        #mobile="ngModel" [class.is-invalid]="mobile.invalid && mobile.touched"
+        pattern="^(05)([0-9]{8})$"
+        type="text" [(ngModel)]="service.user.mobile" class="form-control" name="mobile">
+        <div *ngIf="errors?.Mobile && isSubmit" class="alert alert-danger mt-2 mb-2">
+            <div>
+                {{ errors.Mobile }}
+            </div>
+        </div>
+        <div *ngIf="mobile.errors && (mobile.invalid || mobile.touched)">
+            <div class="alert alert-danger mt-2 mb-2" *ngIf="mobile.errors.pattern">
+                Please provide a valid mobile number</div>
+          </div>
+    </div>
+    <input type="submit" class="btn btn-primary btn-lg" value="{{ 'Login' | translate }}">
+</form>
+<div *ngIf="service.isLogIn">
+    <h1>
+        {{ 'Home'| translate }}
+    </h1>
+</div>

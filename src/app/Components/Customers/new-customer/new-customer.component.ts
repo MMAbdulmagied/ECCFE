@@ -11,7 +11,7 @@ export class NewCustomerComponent implements OnInit {
 
   errors: any;
   isSubmit: boolean = false;
-
+  
   constructor(public service: CustomerService, private _router: Router) { }
 
   ngOnInit(): void {

@@ -16,7 +16,6 @@ export class CustomerService {
     email: ''
   };
 
-
   constructor(private http: HttpClient) { }
 
   getAllCustomers() {
