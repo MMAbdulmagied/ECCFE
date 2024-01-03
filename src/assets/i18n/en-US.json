@@ -17,5 +17,12 @@
         "Mobile": "Mobile",
         "Email": "Email",
         "CreateNewCustomer": "Create New Customer"
+    },
+    "Complain": {
+        "SAVE": "SAVE",
+        "Title": "Title",
+        "Description": "Description",
+        "CustomerName": "Customer Name",
+        "CreateNewComplain":"Create New Complain"
     }
 }

@@ -17,5 +17,12 @@
         "Mobile": "الجوال",
         "Email": "البريد الالكتروني",
         "CreateNewCustomer":"إضافة عميل جديد"
+    },
+    "Complain": {
+        "SAVE": "حفظ",
+        "Title": "العنوان",
+        "Description": "الوصف",
+        "CustomerName": "اسم العميل",
+        "CreateNewComplain":"إضافة شكوى جديدة"
     }
 }
