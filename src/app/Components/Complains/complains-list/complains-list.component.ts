@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Complain } from 'src/app/Models/complain.model';
+import { ComplainService } from 'src/app/Services/complain.service';
 
 @Component({
   selector: 'app-complains-list',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComplainsListComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service: ComplainService) { }
 
   ngOnInit(): void {
+    this.service.getAllComplains()
   }
-
+  onComplete(complain: Complain) {
+    debugger;
+    complain.isCompleted = true;
+    this.service.putComplain(complain).subscribe();
+  }
 }

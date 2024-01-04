@@ -1,1 +1,59 @@
-<p>new-complain works!</p>
+<mat-stepper #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Customer Data</ng-template>
+            <mat-form-field>
+                <div class="form-group">
+                    <div>
+                        <label>{{ 'CUSTOMER.Name' | translate }} </label>
+                        <div style="margin-top: 4px;"></div>
+                        <mat-label disabled>{{currentUser.name}}</mat-label>
+                        <input matInput value="currentUser.name" formControlName="nameCtrl" hidden>
+                    </div>
+                    <div style="margin-top: 4px;"></div>
+                    <div>
+                        <label>{{ 'CUSTOMER.Mobile' | translate }}</label>
+                        <div style="margin-top: 4px;"></div>
+                        <mat-label disabled>{{currentUser.mobile}}</mat-label>
+                        <input matInput value="currentUser.mobile" formControlName="mobileCtrl" hidden>
+                    </div>
+                    <div style="margin-top: 4px;"></div>
+                    <div>
+                        <label>{{ 'CUSTOMER.Email' | translate }} </label>
+                        <div style="margin-top: 4px;"></div>
+                        <mat-label disabled style="width: 500px;">{{currentUser.email}}</mat-label>
+                        <input matInput value="currentUser.email" formControlName="emailCtrl" hidden>
+                    </div>
+                </div>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Fill out your complain</ng-template>
+            <mat-form-field>
+                <div class="form-group">
+                    <div>
+                        <mat-label for="titleCtrl">{{ 'Complain.Title' | translate }}</mat-label>
+                        <input matInput formControlName="titleCtrl">
+                        
+                    </div>
+                <div style="margin-top: 14px;"></div>
+                <div>
+                    <mat-label for="descCtrl">{{ 'Complain.Description' | translate }}</mat-label>
+                    <input matInput formControlName="descCtrl">
+                </div>
+                </div>
+            </mat-form-field>
+            <div>
+
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="onSave()">Save</button>
+                <button mat-button (click)="onComplete()">Save & Finish</button>
+            </div>
+        </form>
+    </mat-step>
+</mat-stepper>
