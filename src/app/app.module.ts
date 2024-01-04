@@ -27,7 +27,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     ComplainsListComponent,
     CertificatesListComponent,
-    NewCertificateComponent,
     PageNotFoundComponent,
     CustomersListComponent,
     NewCustomerComponent,
