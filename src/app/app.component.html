@@ -17,11 +17,12 @@
         <div class="left-side-nav">
             <div class="menu languages-menu ui-rtl " dir="rtl">
 
-                <button type="button" class="cursor-pointer" style="padding-top: 13px" icon="pi pi-list" label=" "
+                <button type="button" class="btn btn-outline-success my-2 my-sm-0" style="padding-top: 13px" icon="pi pi-list" label=" "
                     (click)="langtoggle()">
                     {{translate.currentLang == 'ar-SA'?'عربى':'English'}}
                 </button>
-                <button *ngIf="loginService.isLogIn" type="button" class="cursor-pointer" style="padding-top: 13px"
+                &nbsp;
+                <button *ngIf="loginService.isLogIn" type="button" class="btn btn-outline-success my-2 my-sm-0"style="padding-top: 13px"
                     icon="pi pi-list" label=" " (click)="onLogout()">
                     {{translate.currentLang == 'ar-SA'?'خروج':'Logout'}}
                 </button>
