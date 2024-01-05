@@ -9,6 +9,7 @@ import { Customer } from 'src/app/Models/customer.model';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { CertificateService } from 'src/app/Services/certificate.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-new-certificate',
@@ -22,6 +23,7 @@ import { CertificateService } from 'src/app/Services/certificate.service';
   ],
   standalone: true,
   imports: [
+    CommonModule,
     TranslateModule,
     MatStepperModule,
     FormsModule,
@@ -43,8 +45,8 @@ export class NewCertificateComponent implements OnInit {
     emailCtrl: new FormControl(''),
   });
   secondFormGroup = this._formBuilder.group({
-    academicYearCtrl: new FormControl('', Validators.required),
-    schoolNameCtrl: new FormControl('', Validators.required),
+    academicYearCtrl: ['0',[Validators.required]],
+    schoolNameCtrl: ['',[Validators.required]],
   });
 
   constructor(public service: CertificateService, public translate: TranslateService, private _formBuilder: FormBuilder, private _router: Router) {

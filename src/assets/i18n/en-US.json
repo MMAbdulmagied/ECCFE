@@ -19,10 +19,16 @@
         "CreateNewCustomer": "Create New Customer"
     },
     "Complain": {
-        "SAVE": "SAVE",
+        "Save": "Save",
         "Title": "Title",
         "Description": "Description",
         "CustomerName": "Customer Name",
-        "CreateNewComplain":"Create New Complain"
+        "CreateNewComplain": "Create New Complain",
+        "Edit": "Edit",
+        "CompleteSave": "Complete Save",
+        "Actions": "Actions",
+        "SaveFinish":"Save & Finish",
+        "Next":"Next",
+        "Back":"Back"
     }
 }

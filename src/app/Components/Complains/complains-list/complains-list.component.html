@@ -7,15 +7,19 @@
             <th>{{ 'Complain.Title' | translate }}</th>
             <th>{{ 'Complain.Description' | translate }}</th>
             <th>{{ 'Complain.CustomerName' | translate }}</th>
-            <th>Actions</th>
+            <th>{{ 'Complain.Actions' | translate }}</th>
         </thead>
         <tbody>
-                 <tr *ngFor="let item of service.complains">
-                    <td>{{ item.title }}</td>
-                    <td>{{ item.description }}</td>
-                    <td>{{ item.customerName }}</td>
-                    <td><a *ngIf="!item.isCompleted" (click)="onComplete(item)" class="btn btn-danger">Complete Save</a></td>
-                </tr> 
+            <tr *ngFor="let item of service.complains">
+                <td>{{ item.title }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.customerName }}</td>
+                <td>
+                    <a (click)="fillData(item)" class="btn btn-danger">{{ 'Complain.Edit' | translate }}</a> &nbsp;
+                    <a *ngIf="!item.isCompleted" (click)="onComplete(item)" class="btn btn-danger">{{
+                        'Complain.CompleteSave' | translate }}</a>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

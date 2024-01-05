@@ -1,4 +1,4 @@
-<mat-stepper #stepper>
+<mat-stepper [linear]="true" #stepper labelPosition="bottom">
     <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel>Customer Data</ng-template>
@@ -19,25 +19,41 @@
                 <input matInput value="currentUser.email" formControlName="emailCtrl" hidden>
             </mat-form-field>
             <div>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-raised-button matStepperNext>{{ 'Complain.Next' | translate }}</button>
             </div>
         </form>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup">
         <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Fill out your certificate</ng-template>
-            <mat-form-field>
-                <mat-label for="academicYearCtrl">{{ 'Certificate.AcademicYear' | translate }}</mat-label>
-                <input matInput formControlName="academicYearCtrl">
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label for="schoolNameCtrl">{{ 'Certificate.SchoolName' | translate }}</mat-label>
-                <input matInput formControlName="schoolNameCtrl">
-            </mat-form-field>
-            <div>
+            <div class="col-12 col-md-4">
+                <div class="form-group">
+                    <label for="academicYearCtrl">{{ 'Certificate.AcademicYear' | translate }}<span
+                            style="color:red;">*</span></label>
+                    <input type="number" formControlName="academicYearCtrl" class="form-control" required />
+                </div>
+                <div *ngIf="errors?.AcademicYear && isSubmit" class="alert alert-danger mt-2 mb-2">
+                    <div>
+                        {{ errors.AcademicYear }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="form-group">
+                    <label for="schoolNameCtrl">{{ 'Certificate.SchoolName' | translate }}<span
+                            style="color:red;">*</span></label>
+                    <input type="text" formControlName="schoolNameCtrl" class="form-control" required />
+                </div>
+                <div *ngIf="errors?.SchoolName && isSubmit" class="alert alert-danger mt-2 mb-2">
+                    <div>
+                        {{ errors.SchoolName }}
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
 
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button (click)="onSave()">Save</button>
+                <button mat-raised-button matStepperPrevious>{{ 'Complain.Back' | translate }}</button>
+                <button mat-raised-button (click)="onSave()">{{ 'Complain.Save' | translate }}</button>
             </div>
         </form>
     </mat-step>

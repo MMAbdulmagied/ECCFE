@@ -9,6 +9,7 @@ import { Customer } from 'src/app/Models/customer.model';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ComplainService } from 'src/app/Services/complain.service';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-new-complain',
@@ -22,6 +23,7 @@ import { Router } from '@angular/router';
   ],
   standalone: true,
   imports: [
+    CommonModule,
     TranslateModule,
     MatStepperModule,
     FormsModule,
@@ -43,17 +45,23 @@ export class NewComplainComponent implements OnInit {
     emailCtrl: new FormControl(''),
   });
   secondFormGroup = this._formBuilder.group({
-    titleCtrl: new FormControl('', Validators.required),
-    descCtrl: new FormControl('', Validators.required),
-  });
+    titleCtrl: [this.service.complain.title,[Validators.required]],
+    descCtrl: [this.service.complain.description,Validators.required],
+  },
+  { updateOn: "submit" });
 
-  constructor(public service: ComplainService, public translate: TranslateService, private _formBuilder: FormBuilder, private _router: Router) {
+  constructor(public service: ComplainService, public translate: TranslateService, private _formBuilder: FormBuilder,
+     private _router: Router) {
     this.currentUser = JSON.parse(localStorage.getItem('user') as string) as Customer;
   }
 
   ngOnInit(): void {
-    this.initComplain();
+    
   }
+  
+  get sc() {
+    return this.secondFormGroup.controls;
+  };
   initComplain() {
     this.service.complain = {
       id: 0,
@@ -70,34 +78,41 @@ export class NewComplainComponent implements OnInit {
     this.service.complain.title = this.secondFormGroup.value.titleCtrl as string;
     this.service.complain.description = this.secondFormGroup.value.descCtrl as string;
     this.service.complain.customerId = this.currentUser.id;
-    
+
 
   }
   onSave() {
-
     this.isSubmit = true;
     this.fillComplainObj();
     this.service.complain.isCompleted = false;
-
-    this.service.postComplain().subscribe(res => {
-      this._router.navigateByUrl('/complains');
-    }, err => {
-      this.errors = err.error.errors;
-      if (this.errors == null)
-        this.errors = err.error;
-    });
+    this.postorput();
   }
   onComplete() {
     this.isSubmit = true;
     this.fillComplainObj();
     this.service.complain.isCompleted = true;
-    
-    this.service.postComplain().subscribe(res => {
-      this._router.navigateByUrl('/complains');
-    }, err => {
-      this.errors = err.error.errors;
-      if (this.errors == null)
-        this.errors = err.error;
-    });
+    this.postorput();
+  }
+  postorput() {
+    if (this.service.complain.id == 0) {
+      this.service.postComplain().subscribe(res => {
+        this.initComplain();
+        this._router.navigateByUrl('/complains');
+      }, err => {
+        this.errors = err.error.errors;
+        if (this.errors == null)
+          this.errors = err.error;
+      });
+    }
+    else {
+      this.service.putComplain(this.service.complain).subscribe(res => {
+        this.initComplain();
+        this._router.navigateByUrl('/complains');
+      }, err => {
+        this.errors = err.error.errors;
+        if (this.errors == null)
+          this.errors = err.error;
+      });
+    }
   }
 }

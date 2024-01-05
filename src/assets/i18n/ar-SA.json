@@ -19,10 +19,16 @@
         "CreateNewCustomer":"إضافة عميل جديد"
     },
     "Complain": {
-        "SAVE": "حفظ",
+        "Save": "حفظ",
         "Title": "العنوان",
         "Description": "الوصف",
         "CustomerName": "اسم العميل",
-        "CreateNewComplain":"إضافة شكوى جديدة"
+        "CreateNewComplain":"إضافة شكوى جديدة",
+        "Edit": "تعديل",
+        "CompleteSave": "حفظ نهائي",
+        "Actions": "مهام",
+        "SaveFinish":"حفظ نهائي",
+        "Next":"التالي",
+        "Back":"عودة"
     }
 }
