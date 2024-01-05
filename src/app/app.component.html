@@ -1,6 +1,19 @@
 <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" routerLink="">{{ 'Home' | translate }}</a>
+        <ul class="navbar-nav mr-auto">
+            <!-- <li class="nav-item"><a routerLink="">{{ 'Home' | translate }}</a></li> -->
+            <li class="nav-item " *ngIf="loginService.isLogIn && loginService.user.id == -1">
+                <a class="nav-link" routerLink="customers">{{ 'Customers' | translate }}</a>
+            </li>
+            <li class="nav-item" *ngIf="loginService.isLogIn">
+                <a class="nav-link" routerLink="certificates">{{ 'Certificates' | translate }}</a>
+            </li>
+            <li class="nav-item" *ngIf="loginService.isLogIn">
+                <a class="nav-link" routerLink="complains">{{ 'Complains' | translate }}</a>
+            </li>
+        </ul>
 
-    <nav class=" justify-content-between d-none d-lg-flex">
         <div class="left-side-nav">
             <div class="menu languages-menu ui-rtl " dir="rtl">
 
@@ -8,20 +21,20 @@
                     (click)="langtoggle()">
                     {{translate.currentLang == 'ar-SA'?'عربى':'English'}}
                 </button>
-                <button *ngIf="loginService.isLogIn" type="button" class="cursor-pointer" style="padding-top: 13px" icon="pi pi-list" label=" "
-                    (click)="onLogout()">
+                <button *ngIf="loginService.isLogIn" type="button" class="cursor-pointer" style="padding-top: 13px"
+                    icon="pi pi-list" label=" " (click)="onLogout()">
                     {{translate.currentLang == 'ar-SA'?'خروج':'Logout'}}
                 </button>
             </div>
         </div>
     </nav>
 
-    <ul>
+    <!-- <ul>
         <li><a routerLink="">{{ 'Home' | translate }}</a></li>
         <li *ngIf="loginService.isLogIn && loginService.user.id == -1"><a routerLink="customers">{{ 'Customers' | translate }}</a></li>
         <li *ngIf="loginService.isLogIn"><a routerLink="certificates">{{ 'Certificates' | translate }}</a></li>
         <li *ngIf="loginService.isLogIn"><a routerLink="complains">{{ 'Complains' | translate }}</a></li>
-    </ul>
+    </ul> -->
 
     <router-outlet></router-outlet>
 </div>
