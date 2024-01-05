@@ -32,6 +32,7 @@ export class DashboardComponent implements OnInit {
 
     this.service.login().subscribe(res => {
       this.service.isLogIn = true;
+      this.service.user = res as Customer;
       localStorage.setItem('user', JSON.stringify(res as Customer))
       //this._router.navigateByUrl('/customers');
     }, err => {

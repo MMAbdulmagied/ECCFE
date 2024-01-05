@@ -18,7 +18,7 @@
 
     <ul>
         <li><a routerLink="">{{ 'Home' | translate }}</a></li>
-        <li><a routerLink="customers">{{ 'Customers' | translate }}</a></li>
+        <li *ngIf="loginService.isLogIn && loginService.user.id == -1"><a routerLink="customers">{{ 'Customers' | translate }}</a></li>
         <li *ngIf="loginService.isLogIn"><a routerLink="certificates">{{ 'Certificates' | translate }}</a></li>
         <li *ngIf="loginService.isLogIn"><a routerLink="complains">{{ 'Complains' | translate }}</a></li>
     </ul>
